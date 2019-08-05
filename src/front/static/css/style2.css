@@ -1,0 +1,21 @@
+@font-face {
+	font-family: 'Binggrae';
+    src:url('/static/fonts/Binggrae.otf') format('opentype'),
+        url('/static/fonts/Binggrae.ttf') format('truetype');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Binggrae';
+	src:url('/static/fonts/Binggrae-Bold.otf') format('opentype'),
+        url('/static/fonts/Binggrae-Bold.ttf') format('truetype');
+	font-weight: bold;
+}
+
+a>h4.post-headline,.food-time{
+    font-family: 'Binggrae';
+}
+
+a>.food-time{
+    margin-top: 5px;
+}
