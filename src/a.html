@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="startpage1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>첫화면</title>
+</head>
+
+<body>          
+        <section class="container">   
+                <div>
+                    <select id="leftValues" size="14" multiple>
+                     <!---   
+                        {% for ingredients in //백엔드데이터 %}
+                            <optgroup label="ingredients.bigname">                                
+                                {% for ingredients.smallname  in ingredients.bigname %}
+                                <option >ingredients.smallname</option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                        
+                        -->       
+                                <optgroup id="meat" label="육류">
+                                    <option value1="0" value2="1">돼지고기</option>
+                                    <option value1="0" value2="2">닭고기</option>
+                                    <option value1="0" value2="3">소고기</option>
+                                </optgroup>    
+                                <optgroup label="채소">
+                                    <option value1="0" value2="4">양파</option>
+                                    <option value1="0" value2="5">김치</option>
+                                    <option value1="0" value2="6">대파</option>
+                                </optgroup>
+                                
+                                <optgroup label="곡류">
+                                    <option value1="0" value2="7">백미</option>
+                                    <option value1="0" value2="8">현미</option>
+                                    <option value1="0" value2="9">곡물믹스</option>
+                                </optgroup>
+                    </select>
+                    <div>
+                        <input type="text" id="txtLeft" />
+                    </div>
+                </div>
+                    <div>
+                        <input type="button" id="btnRight" value="&gt;&gt;" />
+                        <input type="button" id="btnLeft" value="&lt;&lt;" />
+                    </div>
+                    <div>
+                        <select id="rightValues" size="16" multiple></select>
+                    <div>
+                        <button type="submit">search </button>
+                    </div>
+                    </div>
+        
+         
+                </section>
+
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    
+
+
+    $("#btnRight").click(function () {
+        var selectedItem = $("#leftValues option:selected");
+        var copyItemLeft = $(selectedItem);
+        console.log("여기가 왼쪽에서 value1");
+        console.log(selectedItem.attr("value1")); 
+        if((selectedItem.attr("value1"))==0){   
+            $(copyItemLeft).clone().appendTo("#rightValues");
+            console.log(selectedItem.attr("value1",1)); 
+            console.log(selectedItem.attr("value2"));
+            console.log(selectedItem.attr("value1"));
+        }else{
+            console.log(selectedItem.attr("value1"));
+        }
+
+    });
+
+
+    $("#btnLeft").click(function () {
+        var selectedItem = $("#rightValues option:selected");
+        console.log("여기는 오른쪽");
+        var id = selectedItem.attr('value2');
+        var children = $("#leftValues").children()
+        children.each(function(){
+            var childchildren = $(this).children();
+            console.log(childchildren);
+            childchildren.each(function(){
+                if($(this).attr("value2")==id){
+                    $(this).attr("value1",0);
+                }
+            });
+        });
+        console.log(id)
+        selectedItem.detach();
+    });
+
+</script>
